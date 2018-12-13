@@ -9,14 +9,19 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   // get router in constructor
-  constructor(private router : Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   // use navigate to go somewhere
-  onLoadServers(){
-    this.router.navigate(['/servers']);
+  onLoadServers(id: number) {
+    this.router.navigate(
+      ['/servers', id, 'edit'],
+      {
+        queryParams: { allowEdit: '1' },
+        fragment: 'leading'
+      }
+    );
   }
-
 }
